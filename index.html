@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio PKL - Nayaka Agriano Setiawan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Profile Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 16px;
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #38bdf8;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .badge-status {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 16px;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-weight: 600;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 1.4rem;
+            color: #f8fafc;
+            margin-bottom: 15px;
+            border-left: 4px solid #38bdf8;
+            padding-left: 12px;
+        }
+
+        h3.sub-heading {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin: 15px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        /* Certificate Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .card.suhu-card {
+            border-color: #0284c7;
+            background: linear-gradient(180deg, #1e293b, #0f172a);
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+        }
+
+        .card .issuer {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card .badge-type {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card .score {
+            display: inline-block;
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+        }
+
+        /* Skills Tags */
+        .skills-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            border: 1px solid #334155;
+        }
+
+        .skill-tag.fo-highlight {
+            border: 1px solid #38bdf8 !important;
+            color: #38bdf8 !important;
+            background-color: rgba(56, 189, 248, 0.15) !important;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <header>
+            <h1>Nayaka Agriano Setiawan</h1>
+            <p>Siswa SMK - Teknik Komputer dan Jaringan (TKJ)</p>
+            <div class="badge-status">Siap PKL &bull; FTTH, Fiber Optics & Data Center Specialist</div>
+        </header>
+
+        <!-- Certifications -->
+        <section>
+            <h2>Sertifikasi Pelatihan & Industri</h2>
+            <div class="grid">
+                
+                <!-- SUHU Training Certificates -->
+                <div class="card suhu-card">
+                    <h3>Fundamental Principles of Fiber Optics</h3>
+                    <div class="issuer">SUHU Training and Consulting</div>
+                    <div class="badge-type">Nasional / E-Learning</div>
+                    <p>Prinsip dasar transmisi serat optik, arsitektur fisik jaringan kabel optik, serta keselamatan kerja penanganan optik.</p>
+                </div>
+
+                <div class="card suhu-card">
+                    <h3>Data Center Management (SNI 8799:2023)</h3>
+                    <div class="issuer">SUHU Training and Consulting</div>
+                    <div class="badge-type">Standar Nasional Indonesia (SNI)</div>
+                    <p>Tata kelola infrastruktur Data Center berbasis standar kualifikasi SNI 8799:2023 Pusat Data di Indonesia.</p>
+                </div>
+
+                <!-- Fiber U / FOA Certificates (>= 80%) -->
+                <div class="card">
+                    <h3>Copper Cabling Basic Skills</h3>
+                    <div class="issuer">The Fiber Optic Association (FOA)</div>
+                    <div class="score">Skor: 93.8%</div>
+                    <p>Instalasi kabel UTP/STP, crimping RJ-45, patching, serta pengujian kualitas koneksi LAN berbasis TIA/EIA.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Connector Inspection & Cleaning</h3>
+                    <div class="issuer">The Fiber Optic Association (FOA)</div>
+                    <div class="score">Skor: 90%</div>
+                    <p>Prosedur standar penanganan, inspeksi, dan pembersihan konektor optik (UPC/APC) untuk mencegah redaman.</p>
+                </div>
+
+                <div class="card">
+                    <h3>FTTX Fiber To The Home</h3>
+                    <div class="issuer">The Fiber Optic Association (FOA)</div>
+                    <div class="score">Skor: 84%</div>
+                    <p>Arsitektur FTTH, konfigurasi perangkat OLT, ODC, ODP, ONT, serta perencanaan jaringan akses pasif.</p>
+                </div>
+
+                <div class="card">
+                    <h3>How Fiber Works</h3>
+                    <div class="issuer">The Fiber Optic Association (FOA)</div>
+                    <div class="score">Skor: 83.3%</div>
+                    <p>Prinsip transmisi total internal reflection dan karakteristik media transmisi kabel serat optik.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Basics of Fiber Optics</h3>
+                    <div class="issuer">The Fiber Optic Association (FOA)</div>
+                    <div class="score">Skor: 80.2%</div>
+                    <p>Prinsip fisik pemantulan cahaya, jenis kabel optik, teknik pengujian redaman, dan keselamatan kerja.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section>
+            <h2>Keahlian Teknis & Praktikum</h2>
+
+            <h3 class="sub-heading">Fiber Optics, FTTH & Data Center Infrastructure</h3>
+            <div class="skills-flex">
+                <span class="skill-tag fo-highlight">FTTH Splicing (Fusion Splicer)</span>
+                <span class="skill-tag fo-highlight">Fiber Optics Testing (OTDR, OPM, VFL)</span>
+                <span class="skill-tag fo-highlight">Connector Cleaning & Maintenance (UPC/APC)</span>
+                <span class="skill-tag fo-highlight">Data Center Management (SNI 8799:2023)</span>
+                <span class="skill-tag fo-highlight">Arsitektur FTTH (OLT, ODC, ODP, ONT)</span>
+                <span class="skill-tag fo-highlight">Standar Kode Warna Core & Tube (TIA/EIA-598)</span>
+            </div>
+
+            <h3 class="sub-heading">Jaringan & Administrasi Sistem (TKJ)</h3>
+            <div class="skills-flex">
+                <span class="skill-tag">MikroTik RouterOS (Queues, Hotspot, Firewall, PPPoE)</span>
+                <span class="skill-tag">Cisco Switch CLI (Inter-VLAN, Port Security, SVI)</span>
+                <span class="skill-tag">Linux Server (DNS BIND9, Web Server, MariaDB)</span>
+                <span class="skill-tag">UTP/STP Copper Cabling & Patch Panel</span>
+                <span class="skill-tag">Docker & Virtualization (VirtualBox/WSL)</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Nayaka Agriano Setiawan. Portofolio Kualifikasi PKL.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
