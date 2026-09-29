@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nayaka Agriano Setiawan — Sertifikasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    --bg:#081019; --bg-2:#0c1a2b; --surface:#10233a; --line:#1e3a5c; --text:#eaf1fb; --text-dim:#7f97b8;
+    --signal:#5eead4; --signal-dim:#2b9d8a; --amber:#f8b84e; --shadow:rgba(0,0,0,.45);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg:#f4f7fb; --bg-2:#eaf0f7; --surface:#fff; --line:#d7e2ee; --text:#0c1c2e; --text-dim:#55697f;
+      --signal:#0f9c8a; --signal-dim:#0c7a6c; --amber:#b9791b; --shadow:rgba(20,40,60,.12);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:#f4f7fb; --bg-2:#eaf0f7; --surface:#fff; --line:#d7e2ee; --text:#0c1c2e; --text-dim:#55697f;
+    --signal:#0f9c8a; --signal-dim:#0c7a6c; --amber:#b9791b; --shadow:rgba(20,40,60,.12);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:linear-gradient(180deg,var(--bg),var(--bg-2) 60%,var(--bg)); color:var(--text);
+    font-family:'Space Grotesk',system-ui,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased; position:relative; }
+  ::selection { background:var(--signal); color:var(--bg); }
+
+  /* scroll progress */
+  #prog { position:fixed; top:0; left:0; right:0; height:3px; z-index:50; transform-origin:0 50%; transform:scaleX(0);
+    background:linear-gradient(90deg,var(--signal),var(--amber)); box-shadow:0 0 10px var(--signal); }
+
+  /* background fibers */
+  .bg-fiber { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:.55; }
+  .bg-fiber path.strand { fill:none; stroke:var(--line); stroke-width:.3; vector-effect:non-scaling-stroke; }
+  .bg-fiber path.pulse { fill:none; stroke-width:.6; vector-effect:non-scaling-stroke; stroke-linecap:round;
+    stroke-dasharray:6 240; animation:flow 7s linear infinite; }
+  .bg-fiber path.pulse.c2 { stroke-dasharray:5 260; animation-duration:9s; animation-delay:-3s; }
+  .bg-fiber path.pulse.c3 { stroke-dasharray:4 220; animation-duration:6s; animation-delay:-1.5s; }
+  @keyframes flow { to { stroke-dashoffset:-1000; } }
+
+  main.content { position:relative; z-index:1; }
+  @media (prefers-reduced-motion: reduce) { * { animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+  .wrap { max-width:920px; margin:0 auto; padding:0 24px; }
+
+  nav.top { position:sticky; top:env(safe-area-inset-top,0px); z-index:10; backdrop-filter:blur(10px);
+    background:color-mix(in srgb,var(--bg) 78%,transparent); border-bottom:1px solid var(--line);
+    animation:drop .8s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes drop { from { transform:translateY(-100%); opacity:0; } }
+  nav.top .wrap { display:flex; justify-content:space-between; align-items:center; height:60px; }
+  .brand { font-weight:600; font-size:15px; }
+  .brand span { color:var(--signal); display:inline-block; animation:blink 2.4s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity:.25; transform:rotate(20deg); } }
+  nav.top .role { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); }
+
+  /* HERO */
+  header.hero { padding:88px 0 64px; position:relative; overflow:hidden; }
+  .rise { opacity:0; transform:translateY(18px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d,0s); }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  .kicker { font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--signal); margin:0 0 18px; }
+  .kicker::after { content:'▍'; margin-left:4px; animation:cur 1s steps(1) infinite; }
+  @keyframes cur { 50% { opacity:0; } }
+  h1.title { font-size:clamp(32px,6vw,54px); font-weight:700; line-height:1.08; margin:0 0 20px; max-width:20ch; letter-spacing:-.01em; }
+  .word { display:inline-block; white-space:nowrap; }
+  .ch { display:inline-block; opacity:0; transform:translateY(.7em) rotate(8deg); filter:blur(6px);
+    animation:ch .8s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:calc(.35s + var(--i) * .045s); }
+  @keyframes ch { to { opacity:1; transform:none; filter:none; } }
+  p.sub { color:var(--text-dim); font-size:17px; max-width:46ch; margin:0 0 28px; }
+  .badge { display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--text-dim); border:1px solid var(--line); padding:7px 14px; border-radius:999px; margin:0 0 24px; }
+  .badge .dot { width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 6px var(--signal); animation:ping 1.8s ease-out infinite; }
+  @keyframes ping { 0% { box-shadow:0 0 0 0 var(--signal); } 100% { box-shadow:0 0 0 10px transparent; } }
+
+  .fiber { width:100%; max-width:640px; height:64px; overflow:visible; }
+  .fiber path.core { fill:none; stroke:var(--line); stroke-width:2; }
+  .fiber path.beam { fill:none; stroke-width:2.4; stroke-linecap:round; stroke-dasharray:46 540; animation:travel 3.4s ease-in-out infinite; }
+  .fiber path.beam.b1 { stroke:var(--signal); filter:drop-shadow(0 0 5px var(--signal)); }
+  .fiber path.beam.b2 { stroke:var(--amber); filter:drop-shadow(0 0 5px var(--amber)); animation-delay:.55s; opacity:.85; }
+  .fiber path.beam.b3 { stroke:#7dd3fc; filter:drop-shadow(0 0 5px #7dd3fc); animation-delay:1.1s; opacity:.7; }
+  .fiber .wl { font-family:'IBM Plex Mono',monospace; font-size:9px; fill:var(--text-dim); }
+  @keyframes travel { 0% { stroke-dashoffset:600; opacity:0; } 8% { opacity:1; } 85% { opacity:1; } 100% { stroke-dashoffset:0; opacity:0; } }
+
+  /* STATS */
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); position:relative; }
+  .stats::after { content:''; position:absolute; top:-1px; left:0; height:2px; width:100%; background:linear-gradient(90deg,transparent,var(--signal),transparent);
+    transform:translateX(-100%); animation:scan 4.5s ease-in-out infinite; }
+  @keyframes scan { 60%,100% { transform:translateX(100%); } }
+  .stat { padding:26px 8px; text-align:center; border-left:1px solid var(--line); }
+  .stat:first-child { border-left:none; }
+  .stat .num { font-family:'IBM Plex Mono',monospace; font-size:clamp(24px,4vw,34px); font-weight:500; color:var(--signal); }
+  .stat .label { font-size:12.5px; color:var(--text-dim); margin-top:4px; }
+
+  /* SECTIONS */
+  section.group { padding:64px 0 8px; }
+  .rv { opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .rv.in { opacity:1; transform:none; }
+  .group-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:28px; gap:16px; flex-wrap:wrap; }
+  .group-head h2 { font-size:22px; font-weight:600; margin:0; position:relative; padding-bottom:8px; }
+  .group-head h2::after { content:''; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--signal); transition:width 1s .3s ease; }
+  .group-head.in h2::after { width:100%; }
+  .group-head p { color:var(--text-dim); font-size:14px; margin:0; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-bottom:56px; }
+
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(30px) scale(.96); transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+  .card.in { opacity:1; transform:none; transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .card.in.done { transition:transform .18s ease-out, box-shadow .35s ease, border-color .35s ease; }
+  .card.done:hover { border-color:var(--signal-dim); box-shadow:0 16px 32px var(--shadow);
+    transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px); }
+  .card::before { content:''; position:absolute; inset:0 0 auto 0; height:2px; background:linear-gradient(90deg,transparent,var(--signal),transparent);
+    transform:translateX(-100%); opacity:0; }
+  .card:hover::before { animation:couple 1.1s ease-in-out; }
+  @keyframes couple { 0% { transform:translateX(-100%); opacity:0; } 15% { opacity:1; } 100% { transform:translateX(100%); opacity:0; } }
+  .card::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .3s;
+    background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%), color-mix(in srgb,var(--signal) 18%,transparent), transparent 70%); }
+  .card:hover::after { opacity:1; }
+
+  .card .led { position:absolute; top:20px; right:20px; width:9px; height:9px; border-radius:50%; background:var(--line); }
+  .card .led.on { background:var(--signal); box-shadow:0 0 8px var(--signal); animation:pulse 2.2s ease-in-out infinite; }
+  .card .led.mid { background:var(--amber); box-shadow:0 0 8px var(--amber); animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity:.35; transform:scale(.75); } }
+  .card .issuer { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.04em; color:var(--text-dim); margin:0 0 10px; }
+  .card h3 { font-size:16.5px; font-weight:600; margin:0 0 10px; max-width:22ch; line-height:1.3; }
+  .card .desc { font-size:13.5px; color:var(--text-dim); line-height:1.55; margin:0 0 16px; }
+  .bar { height:3px; background:var(--line); border-radius:3px; margin:0 0 12px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:0; background:var(--signal); border-radius:3px; transition:width 1.4s cubic-bezier(.2,.8,.2,1) .3s; }
+  .bar i.mid { background:var(--amber); }
+  .card .meta { display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid var(--line); padding-top:12px; }
+  .card .score { font-family:'IBM Plex Mono',monospace; font-size:20px; color:var(--signal); }
+  .card .score.mid { color:var(--amber); }
+  .card .date { font-size:12px; color:var(--text-dim); text-align:right; }
+
+  section.closing { padding:8px 0 72px; }
+  section.closing p.lead { font-size:clamp(20px,3.4vw,29px); font-weight:600; max-width:34ch; line-height:1.4; margin:0 0 16px; }
+  section.closing p.support { font-size:15px; max-width:52ch; line-height:1.7; margin:0; color:var(--text-dim); }
+  .contact { text-align:center; padding:8px 0 56px; }
+  .contact .lbl { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); margin:0 0 14px; }
+  .contact a { display:inline-flex; max-width:100%; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:600;
+    font-size:clamp(15px,3.6vw,18px); padding:14px 24px; border:1px solid var(--line); border-radius:999px; background:var(--surface);
+    position:relative; overflow:hidden; transition:border-color .3s, transform .3s, box-shadow .3s; word-break:break-all; }
+  .contact a::before { content:''; position:absolute; inset:0 0 auto 0; height:2px; background:linear-gradient(90deg,transparent,var(--signal),transparent);
+    transform:translateX(-100%); animation:scan 3.5s ease-in-out infinite; }
+  .contact a:hover { border-color:var(--signal); transform:translateY(-3px); box-shadow:0 12px 28px var(--shadow); }
+  .contact svg { width:20px; height:20px; flex:none; stroke:var(--signal); fill:none; stroke-width:1.8; animation:bob 2.6s ease-in-out infinite; }
+  .copy { margin-top:14px; background:none; border:none; color:var(--text-dim); font:inherit; font-size:13px; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+  .copy:hover { color:var(--signal); }
+  @keyframes bob { 50% { transform:translateY(-3px) rotate(-6deg); } }
+  footer { border-top:1px solid var(--line); padding:32px 0 calc(32px + env(safe-area-inset-bottom,0px)); }
+  footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; color:var(--text-dim); font-size:13px; }
+
+  #net { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .title.live .ch { opacity:1; transform:none; filter:none; animation:wave 4.2s ease-in-out infinite; animation-delay:calc(var(--i) * .11s); }
+  @keyframes wave { 0%,55%,100% { color:var(--text); text-shadow:none; transform:none; }
+    25% { color:var(--signal); text-shadow:0 0 22px var(--signal); transform:translateY(-3px); } }
+  header.hero .wrap { will-change:transform,opacity; }
+  .card .desc, .card h3 { transition:transform .3s ease; }
+  .card.done:hover h3 { transform:translateX(4px); }
+  .stat { transition:background .3s; }
+  .stat:hover { background:color-mix(in srgb,var(--signal) 7%,transparent); }
+
+  body:not(.ready) { overflow:hidden; }
+  body:not(.ready) main * { animation-play-state:paused !important; }
+  #boot { position:fixed; inset:0; z-index:200; display:grid; place-items:center; }
+  #boot .half { position:absolute; left:0; right:0; height:50.5%; background:var(--bg-2); transition:transform 1s cubic-bezier(.8,0,.2,1); }
+  #boot .top { top:0; } #boot .bot { bottom:0; }
+  #boot.go .top { transform:translateY(-101%); } #boot.go .bot { transform:translateY(101%); }
+  #boot .bc { position:relative; text-align:center; font-family:'IBM Plex Mono',monospace; transition:opacity .4s; }
+  #boot.go .bc { opacity:0; }
+  .bl { color:var(--signal); font-size:13px; margin:0 0 16px; min-height:20px; }
+  .bt { width:min(320px,70vw); height:3px; background:var(--line); margin:0 auto; border-radius:3px; overflow:hidden; }
+  .bt i { display:block; height:100%; background:linear-gradient(90deg,var(--signal),var(--amber)); transform-origin:0 50%; transform:scaleX(0); box-shadow:0 0 12px var(--signal); }
+  .bp { color:var(--text-dim); font-size:12px; margin:12px 0 0; }
+  .marquee { overflow:hidden; margin:0 0 44px; -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); }
+  .mt { display:flex; width:max-content; animation:mq 32s linear infinite; font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dim); }
+  .mt:hover { animation-play-state:paused; }
+  .mt span { padding:0 24px; white-space:nowrap; } .mt b { color:var(--signal); font-weight:400; }
+  @keyframes mq { to { transform:translateX(-50%); } }
+  .otdr { width:100%; max-width:600px; display:block; margin:0 0 6px; overflow:visible; }
+  .otdr .tr { stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 3s cubic-bezier(.35,.6,.2,1) .2s; }
+  .otdr.in .tr { stroke-dashoffset:0; }
+  .otdr .lb { opacity:0; transition:opacity .7s; } .otdr.in .lb { opacity:1; }
+  .otdr .mono { font-family:'IBM Plex Mono',monospace; }
+  .cap { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--text-dim); margin:0 0 36px; }
+  .dots { position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; gap:16px; transition:opacity .6s; }
+  body:not(.ready) .dots { opacity:0; }
+  @media (max-width:1000px) { .dots { display:none; } }
+  .dots button { width:10px; height:10px; border-radius:50%; border:1px solid var(--text-dim); background:transparent; padding:0; cursor:pointer; position:relative; transition:.3s; }
+  .dots button.on { background:var(--signal); border-color:var(--signal); box-shadow:0 0 10px var(--signal); transform:scale(1.35); }
+  .dots button::after { content:attr(data-l); position:absolute; right:20px; top:50%; transform:translateY(-50%) translateX(6px); font:11px 'IBM Plex Mono',monospace; color:var(--text); opacity:0; pointer-events:none; transition:.25s; white-space:nowrap; }
+  .dots button:hover::after { opacity:1; transform:translateY(-50%); }
+
+  .splsec { padding:24px 0 8px; }
+  .spl { width:100%; max-width:640px; display:block; margin:0 0 6px; overflow:visible; }
+  .spl .fr1 { fill:var(--amber); fill-opacity:.32; stroke:var(--amber); stroke-opacity:.6; }
+  .spl .gl { fill:var(--text-dim); fill-opacity:.22; stroke:var(--text-dim); stroke-opacity:.5; }
+  .spl .co { fill:var(--signal); fill-opacity:.8; }
+  .spl .el { fill:var(--text-dim); fill-opacity:.7; }
+  .spl .fm { fill:var(--surface); fill-opacity:.5; stroke:var(--line); }
+  .spl text { font-family:'IBM Plex Mono',monospace; font-size:10px; fill:var(--text-dim); }
+  .spl .st { fill:var(--signal); font-size:11px; letter-spacing:.08em; }
+  .spl .loss { fill:var(--amber); font-size:12px; opacity:0; animation:loss 9s infinite; }
+  .spl .s1, .spl .s2, .spl .s3 { opacity:0; }
+  .spl .s1 { animation:s1 9s infinite; } .spl .s2 { animation:s2 9s infinite; } .spl .s3 { animation:s3 9s infinite; }
+  .spl .stage { animation:stage 9s infinite; }
+  .spl .fl { animation:fl 9s ease-in-out infinite; } .spl .fr { animation:fr 9s ease-in-out infinite; }
+  .spl .arc { fill:none; stroke:#bae6fd; stroke-width:2; stroke-linejoin:round; opacity:0; filter:drop-shadow(0 0 5px #38bdf8) drop-shadow(0 0 10px #38bdf8); animation:arc 9s infinite; }
+  .spl .glow { opacity:0; transform-box:fill-box; transform-origin:center; animation:glow 9s infinite; }
+  .spl .pulse { fill:var(--amber); filter:drop-shadow(0 0 6px var(--amber)); opacity:0; animation:pulse 9s linear infinite; }
+  .spl .sleeve { fill:var(--signal); fill-opacity:.16; stroke:var(--signal); stroke-opacity:.5; opacity:0; transform-box:fill-box; transform-origin:center; animation:sleeve 9s infinite; }
+  .spl:not(.in) * { animation-play-state:paused; }
+  @keyframes stage { 0% { opacity:0; } 4%,92% { opacity:1; } 97%,100% { opacity:0; } }
+  @keyframes fl { 0%,14% { transform:translate(0,0); } 30%,40% { transform:translate(17px,0); } 48%,97% { transform:translate(20px,0); } 100% { transform:translate(0,0); } }
+  @keyframes fr { 0%,14% { transform:translate(0,8px); } 30% { transform:translate(-17px,8px); } 40% { transform:translate(-17px,0); } 48%,97% { transform:translate(-20px,0); } 100% { transform:translate(0,8px); } }
+  @keyframes arc { 0%,40% { opacity:0; } 41%,43%,45%,47% { opacity:1; } 42%,44%,46% { opacity:.3; } 48%,100% { opacity:0; } }
+  @keyframes glow { 0%,40% { opacity:0; transform:scale(.3); } 47% { opacity:1; transform:scale(1.25); } 58% { opacity:.4; transform:scale(.8); } 68%,100% { opacity:0; transform:scale(.6); } }
+  @keyframes sleeve { 0%,60% { opacity:0; transform:scaleX(.5); } 68%,92% { opacity:1; transform:scaleX(1); } 97%,100% { opacity:0; } }
+  @keyframes pulse { 0%,62% { opacity:0; transform:translateX(0); } 64% { opacity:1; } 78% { opacity:1; transform:translateX(520px); } 80%,100% { opacity:0; transform:translateX(520px); } }
+  @keyframes s1 { 0%,6% { opacity:0; } 10%,36% { opacity:1; } 40%,100% { opacity:0; } }
+  @keyframes s2 { 0%,39% { opacity:0; } 41%,47% { opacity:1; } 50%,100% { opacity:0; } }
+  @keyframes s3 { 0%,50% { opacity:0; } 54%,91% { opacity:1; } 95%,100% { opacity:0; } }
+  @keyframes loss { 0%,72% { opacity:0; } 78%,91% { opacity:1; } 95%,100% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .spl * { animation:none !important; }
+    .spl .fl { transform:translate(20px,0); } .spl .fr { transform:translate(-20px,0); }
+    .spl .s3, .spl .loss, .spl .sleeve { opacity:1; }
+  }
+
+  .stp, .core12 { width:100%; max-width:640px; display:block; margin:0 0 6px; }
+  .core12 { margin-top:34px; }
+  .fm2 { fill:var(--surface); fill-opacity:.5; stroke:var(--line); }
+  .stp .tx, .core12 .tx { font-family:'IBM Plex Mono',monospace; font-size:10px; fill:var(--text-dim); }
+  .stp .jt { fill:var(--text); fill-opacity:.7; letter-spacing:.06em; }
+  .stp .jk { fill:color-mix(in srgb,var(--text-dim) 45%,var(--surface)); stroke:var(--text-dim); stroke-opacity:.5; }
+  .stp .rid { stroke:var(--text-dim); stroke-opacity:.3; fill:none; }
+  .stp .bd { fill:var(--amber); }
+  .stp .cut { fill:var(--amber); opacity:0; animation:pcut 10s infinite; }
+  .stp .st2 { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; fill:var(--signal); opacity:0; }
+  .stp .p1 { animation:p1 10s infinite; } .stp .p2 { animation:p2 10s infinite; } .stp .p3 { animation:p3 10s infinite; }
+  .stp .stage2 { animation:pstage 10s infinite; }
+  .stp .bt { animation:pbt 10s ease-in-out infinite; } .stp .bb { animation:pbb 10s ease-in-out infinite; }
+  .stp .jkr { animation:pjk 10s ease-in-out infinite; }
+  .stp .sf { transform-box:view-box; transform-origin:300px 100px; animation:pfan 10s ease-in-out infinite; }
+  .stp:not(.in) *, .core12:not(.in) * { animation-play-state:paused; }
+  @keyframes pstage { 0% { opacity:0; } 4%,93% { opacity:1; } 97%,100% { opacity:0; } }
+  @keyframes pbt { 0%,8% { transform:translateY(0); } 20%,32% { transform:translateY(40px); } 40%,100% { transform:translateY(0); } }
+  @keyframes pbb { 0%,8% { transform:translateY(0); } 20%,32% { transform:translateY(-40px); } 40%,100% { transform:translateY(0); } }
+  @keyframes pcut { 0%,19% { opacity:0; } 21%,38% { opacity:1; } 40%,100% { opacity:0; } }
+  @keyframes pjk { 0%,42% { transform:translateX(0); } 64%,97% { transform:translateX(330px); } 100% { transform:translateX(0); } }
+  @keyframes pfan { 0%,64% { transform:rotate(0); } 80%,97% { transform:rotate(var(--a)); } 100% { transform:rotate(0); } }
+  @keyframes p1 { 0%,6% { opacity:0; } 10%,30% { opacity:1; } 34%,100% { opacity:0; } }
+  @keyframes p2 { 0%,38% { opacity:0; } 42%,60% { opacity:1; } 64%,100% { opacity:0; } }
+  @keyframes p3 { 0%,72% { opacity:0; } 78%,93% { opacity:1; } 97%,100% { opacity:0; } }
+  .core12 .cj { fill:color-mix(in srgb,var(--text-dim) 35%,var(--surface)); stroke:var(--text-dim); stroke-opacity:.5; }
+  .core12 .ct { fill:var(--signal); fill-opacity:.1; stroke:var(--signal); stroke-opacity:.4; stroke-dasharray:3 4; }
+  .core12 .cm { fill:var(--text-dim); fill-opacity:.55; }
+  .core12 .fb { fill:var(--c); stroke:var(--text-dim); stroke-opacity:.5; stroke-width:1; transform-box:fill-box; transform-origin:center;
+    animation:fpop .6s cubic-bezier(.3,1.6,.5,1) calc(var(--i) * .12s) backwards, fhl 7.2s linear calc(2s + var(--i) * .6s) infinite; }
+  .core12 .lg circle { fill:var(--c); stroke:var(--text-dim); stroke-opacity:.5; }
+  .core12 .lg text { font-family:'IBM Plex Mono',monospace; font-size:12px; fill:var(--text); }
+  .core12 .lg { opacity:.5; animation:lpop .5s ease calc(var(--i) * .12s) backwards, lhl 7.2s linear calc(2s + var(--i) * .6s) infinite; }
+  @keyframes fpop { from { transform:scale(0); } }
+  @keyframes lpop { from { opacity:0; } }
+  @keyframes fhl { 0%,8% { filter:drop-shadow(0 0 7px var(--c)); stroke:#fff; stroke-width:2.5; } 10%,100% { filter:none; stroke:var(--text-dim); stroke-width:1; } }
+  @keyframes lhl { 0%,8% { opacity:1; } 10%,100% { opacity:.5; } }
+  @media (prefers-reduced-motion: reduce) {
+    .stp *, .core12 * { animation:none !important; }
+    .stp .jkr { transform:translateX(330px); } .stp .sf { transform:rotate(var(--a)); } .stp .p3, .core12 .lg { opacity:1; }
+  }
+
+  .clv { width:100%; max-width:640px; display:block; margin:0 0 6px; }
+  .clv .fm3 { fill:var(--surface); fill-opacity:.5; stroke:var(--line); }
+  .clv .tx3 { font-family:'IBM Plex Mono',monospace; font-size:10px; fill:var(--text-dim); }
+  .clv .st3 { font-size:11px; letter-spacing:.08em; fill:var(--signal); opacity:0; }
+  .clv .base { fill:color-mix(in srgb,var(--text-dim) 40%,var(--surface)); stroke:var(--text-dim); stroke-opacity:.5; }
+  .clv .pad, .clv .cl { fill:color-mix(in srgb,var(--text-dim) 60%,var(--surface)); stroke:var(--text-dim); stroke-opacity:.6; }
+  .clv .wheel { fill:color-mix(in srgb,var(--text-dim) 30%,var(--surface)); stroke:var(--amber); stroke-width:2; }
+  .clv .spk { stroke:var(--text-dim); stroke-opacity:.7; fill:none; }
+  .clv .coat { fill:var(--amber); fill-opacity:.32; stroke:var(--amber); stroke-opacity:.6; }
+  .clv .glass { fill:var(--text-dim); fill-opacity:.22; stroke:var(--text-dim); stroke-opacity:.5; }
+  .clv .core3 { fill:var(--signal); fill-opacity:.8; }
+  .clv .face { fill:#fff; opacity:0; filter:drop-shadow(0 0 4px var(--signal)); animation:cface 9s infinite; }
+  .clv .flash { fill:url(#cg); opacity:0; transform-box:fill-box; transform-origin:center; animation:cflash 9s infinite; }
+  .clv .cline { stroke:var(--signal); stroke-dasharray:3 4; fill:none; opacity:0; animation:cline 9s infinite; }
+  .clv .mf { fill:var(--surface); fill-opacity:.85; stroke:var(--signal); stroke-width:2; }
+  .clv .mg { fill:var(--text-dim); fill-opacity:.25; stroke:var(--text-dim); stroke-opacity:.5; }
+  .clv .mc { fill:var(--signal); filter:drop-shadow(0 0 6px var(--signal)); animation:cpulse 1.6s ease-in-out infinite; }
+  .clv .mh { stroke:var(--signal); stroke-width:4; stroke-linecap:round; }
+  .clv .mag, .clv .mlb { opacity:0; transform-box:fill-box; transform-origin:center; animation:cmag 9s infinite; }
+  .clv .stage3 { animation:cstage 9s infinite; }
+  .clv .clamp { animation:cclamp 9s ease-in-out infinite; }
+  .clv .wh { animation:cblade 9s ease-in-out infinite; }
+  .clv .sp { transform-box:fill-box; transform-origin:center; animation:cspin 9s ease-in-out infinite; }
+  .clv .off { transform-box:view-box; transform-origin:300px 110px; animation:coff 9s ease-in infinite; }
+  .clv .c1 { animation:c1 9s infinite; } .clv .c2 { animation:c2 9s infinite; } .clv .c3 { animation:c3 9s infinite; }
+  .clv:not(.in) * { animation-play-state:paused; }
+  @keyframes cstage { 0% { opacity:0; } 4%,93% { opacity:1; } 97%,100% { opacity:0; } }
+  @keyframes cclamp { 0%,8% { transform:translateY(-26px); } 18%,70% { transform:translateY(0); } 78%,100% { transform:translateY(-26px); } }
+  @keyframes cblade { 0%,20% { transform:translateY(0); } 27% { transform:translateY(-13px); } 34%,100% { transform:translateY(0); } }
+  @keyframes cspin { 0%,20% { transform:rotate(0); } 34%,100% { transform:rotate(360deg); } }
+  @keyframes coff { 0%,36% { transform:translate(0,0) rotate(0); opacity:1; } 43%,44% { transform:translate(0,0) rotate(-2.5deg); opacity:1; } 60%,100% { transform:translate(70px,80px) rotate(22deg); opacity:0; } }
+  @keyframes cflash { 0%,43% { opacity:0; transform:scale(.3); } 46% { opacity:1; transform:scale(1.3); } 56%,100% { opacity:0; transform:scale(.8); } }
+  @keyframes cface { 0%,44% { opacity:0; } 47%,90% { opacity:.9; } 97%,100% { opacity:0; } }
+  @keyframes cline { 0%,58% { opacity:0; } 64%,93% { opacity:.7; } 97%,100% { opacity:0; } }
+  @keyframes cmag { 0%,58% { opacity:0; transform:scale(.6); } 66%,93% { opacity:1; transform:scale(1); } 97%,100% { opacity:0; } }
+  @keyframes cpulse { 50% { opacity:.55; } }
+  @keyframes c1 { 0%,6% { opacity:0; } 10%,21% { opacity:1; } 24%,100% { opacity:0; } }
+  @keyframes c2 { 0%,21% { opacity:0; } 25%,40% { opacity:1; } 44%,100% { opacity:0; } }
+  @keyframes c3 { 0%,47% { opacity:0; } 52%,93% { opacity:1; } 97%,100% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .clv * { animation:none !important; }
+    .clv .off, .clv .flash { opacity:0; } .clv .clamp { transform:translateY(-26px); }
+    .clv .face, .clv .mag, .clv .mlb, .clv .c3 { opacity:1; } .clv .cline { opacity:.7; }
+  }
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="boot"><div class="half top"></div><div class="half bot"></div>
+  <div class="bc"><p class="bl" id="bl">Preparing page…</p><div class="bt"><i id="bf"></i></div><p class="bp"><span id="bn">0</span>%</p></div></div>
+
+<canvas id="net" aria-hidden="true"></canvas>
+
+<main class="content">
+<nav class="top"><div class="wrap">
+  <div class="brand">Nayaka <span>/</span> Sertifikasi</div>
+  <div class="role">TEKNISI JARINGAN &amp; PUSAT DATA</div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <p class="kicker rise" style="--d:.1s">CATATAN KOMPETENSI</p>
+  <h1 class="title" id="title">Nayaka Agriano Setiawan</h1>
+  <p class="badge rise" style="--d:1.2s"><span class="dot"></span>Siswa SMK Taruna Bhakti</p>
+  <p class="sub rise" style="--d:1.4s">Menekuni dunia jaringan sejak di bangku sekolah — dari menyambung kabel tembaga pertama, hingga memahami bagaimana seberkas cahaya membawa jutaan data menembus serat kaca setipis rambut, sampai menjaga jantung pusat data tetap berdenyut.</p>
+  <svg class="fiber rise" style="--d:1.6s" viewBox="0 0 640 64" preserveAspectRatio="none">
+    <path class="core" d="M0,32 C120,32 140,12 260,12 C360,12 380,52 480,52 C550,52 570,32 640,32"/>
+    <path class="beam b1" d="M0,32 C120,32 140,12 260,12 C360,12 380,52 480,52 C550,52 570,32 640,32"/>
+    <path class="beam b2" d="M0,32 C120,32 140,12 260,12 C360,12 380,52 480,52 C550,52 570,32 640,32"/>
+    <path class="beam b3" d="M0,32 C120,32 140,12 260,12 C360,12 380,52 480,52 C550,52 570,32 640,32"/>
+    <text class="wl" x="0" y="10">1310nm</text>
+    <text class="wl" x="0" y="62">1550nm</text>
+  </svg>
+</div></header>
+
+<div class="marquee rise" style="--d:1.7s"><div class="mt" id="mt"></div></div>
+<div class="wrap">
+  <div class="stats rise" style="--d:1.8s">
+    <div class="stat"><div class="num" data-to="7" data-dec="0" data-suf="">0</div><div class="label">Sertifikat</div></div>
+    <div class="stat"><div class="num" data-to="86.3" data-dec="1" data-suf="%">0%</div><div class="label">Rata-rata skor ujian</div></div>
+    <div class="stat"><div class="num" data-to="2" data-dec="0" data-suf="">0</div><div class="label">Lembaga penerbit</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="group">
+    <div class="group-head rv"><h2>Sertifikasi Profesional</h2><p>SUHU Training and Consulting · berlaku Agt 2026–2027</p></div>
+    <div class="grid" id="grid-suhu"></div>
+  </section>
+  <section class="group">
+    <div class="group-head rv"><h2>Fiber U Specialist Program</h2><p>Fiber Optic Association (FOA) · diselesaikan 24 Sep 2026</p></div>
+    <div class="grid" id="grid-fiberu"></div>
+  </section>
+</div>
+
+<div class="wrap"><section class="splsec">
+  <div class="group-head rv"><h2>Kabel FO 12 Core</h2><p>Ilustrasi: stripping jaket dan kode warna serat</p></div>
+  <svg class="stp rv" viewBox="0 0 600 200" role="img" aria-label="Animasi stripping jaket kabel fiber optik 12 core">
+    <rect class="fm2" x="1" y="1" width="598" height="198" rx="14"/>
+    <text class="tx" x="18" y="24">CABLE STRIPPER · JACKET</text>
+    <g class="stage2">
+      <rect class="sf" style="--a:-7.15deg;fill:#2563eb" x="300" y="76.0" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:-5.85deg;fill:#f97316" x="300" y="79.7" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:-4.55deg;fill:#16a34a" x="300" y="83.4" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:-3.25deg;fill:#92400e" x="300" y="87.1" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:-1.95deg;fill:#64748b" x="300" y="90.8" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:-0.65deg;fill:#f8fafc" x="300" y="94.5" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:0.65deg;fill:#dc2626" x="300" y="98.2" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:1.95deg;fill:#111827" x="300" y="101.9" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:3.25deg;fill:#facc15" x="300" y="105.6" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:4.55deg;fill:#7c3aed" x="300" y="109.3" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:5.85deg;fill:#f472b6" x="300" y="113.0" width="260" height="2.6" rx="1.3"/><rect class="sf" style="--a:7.15deg;fill:#22d3ee" x="300" y="116.7" width="260" height="2.6" rx="1.3"/>
+      <rect class="jk" x="40" y="70" width="260" height="60" rx="6"/>
+      <text class="tx jt" x="58" y="104">FO CABLE · 12 CORE</text>
+      <g class="jkr"><rect class="jk" x="300" y="70" width="260" height="60" rx="6"/><path class="rid" d="M340 70V130M400 70V130M460 70V130M520 70V130"/></g>
+      <rect class="cut" x="298.5" y="70" width="3" height="60"/>
+      <polygon class="bd bt" points="288,6 312,6 303,30 297,30"/><polygon class="bd bb" points="288,194 312,194 303,170 297,170"/>
+      <text class="p1 st2" x="300" y="190" text-anchor="middle">01 · POTONG JAKET</text>
+      <text class="p2 st2" x="300" y="190" text-anchor="middle">02 · TARIK JAKET</text>
+      <text class="p3 st2" x="300" y="190" text-anchor="middle">03 · 12 SERAT TERBUKA ✓</text>
+    </g>
+  </svg>
+  <p class="cap rv">ILUSTRASI · STRIPPING JAKET KABEL FO</p>
+  <svg class="core12 rv" viewBox="0 0 600 260" role="img" aria-label="Penampang kabel FO 12 core dengan kode warna serat">
+    <rect class="fm2" x="1" y="1" width="598" height="258" rx="14"/>
+    <text class="tx" x="18" y="24">PENAMPANG · 12 SERAT</text>
+    <circle class="cj" cx="150" cy="130" r="105"/><circle class="ct" cx="150" cy="130" r="76"/><circle class="cm" cx="150" cy="130" r="16"/>
+    <circle class="fb" style="--i:0;--c:#2563eb" cx="150.0" cy="78.0" r="10.5"/><circle class="fb" style="--i:1;--c:#f97316" cx="176.0" cy="85.0" r="10.5"/><circle class="fb" style="--i:2;--c:#16a34a" cx="195.0" cy="104.0" r="10.5"/><circle class="fb" style="--i:3;--c:#92400e" cx="202.0" cy="130.0" r="10.5"/><circle class="fb" style="--i:4;--c:#64748b" cx="195.0" cy="156.0" r="10.5"/><circle class="fb" style="--i:5;--c:#f8fafc" cx="176.0" cy="175.0" r="10.5"/><circle class="fb" style="--i:6;--c:#dc2626" cx="150.0" cy="182.0" r="10.5"/><circle class="fb" style="--i:7;--c:#111827" cx="124.0" cy="175.0" r="10.5"/><circle class="fb" style="--i:8;--c:#facc15" cx="105.0" cy="156.0" r="10.5"/><circle class="fb" style="--i:9;--c:#7c3aed" cx="98.0" cy="130.0" r="10.5"/><circle class="fb" style="--i:10;--c:#f472b6" cx="105.0" cy="104.0" r="10.5"/><circle class="fb" style="--i:11;--c:#22d3ee" cx="124.0" cy="85.0" r="10.5"/>
+    <g class="lg" style="--i:0;--c:#2563eb"><circle cx="330" cy="66" r="6"/><text x="346" y="70">01 Biru</text></g><g class="lg" style="--i:1;--c:#f97316"><circle cx="330" cy="96" r="6"/><text x="346" y="100">02 Oranye</text></g><g class="lg" style="--i:2;--c:#16a34a"><circle cx="330" cy="126" r="6"/><text x="346" y="130">03 Hijau</text></g><g class="lg" style="--i:3;--c:#92400e"><circle cx="330" cy="156" r="6"/><text x="346" y="160">04 Cokelat</text></g><g class="lg" style="--i:4;--c:#64748b"><circle cx="330" cy="186" r="6"/><text x="346" y="190">05 Abu-abu</text></g><g class="lg" style="--i:5;--c:#f8fafc"><circle cx="330" cy="216" r="6"/><text x="346" y="220">06 Putih</text></g><g class="lg" style="--i:6;--c:#dc2626"><circle cx="465" cy="66" r="6"/><text x="481" y="70">07 Merah</text></g><g class="lg" style="--i:7;--c:#111827"><circle cx="465" cy="96" r="6"/><text x="481" y="100">08 Hitam</text></g><g class="lg" style="--i:8;--c:#facc15"><circle cx="465" cy="126" r="6"/><text x="481" y="130">09 Kuning</text></g><g class="lg" style="--i:9;--c:#7c3aed"><circle cx="465" cy="156" r="6"/><text x="481" y="160">10 Ungu</text></g><g class="lg" style="--i:10;--c:#f472b6"><circle cx="465" cy="186" r="6"/><text x="481" y="190">11 Merah muda</text></g><g class="lg" style="--i:11;--c:#22d3ee"><circle cx="465" cy="216" r="6"/><text x="481" y="220">12 Aqua</text></g>
+  </svg>
+  <p class="cap rv">ILUSTRASI · KODE WARNA SERAT 12 CORE</p>
+</section></div>
+
+<div class="wrap"><section class="splsec">
+  <div class="group-head rv"><h2>Fiber Cleaver</h2><p>Ilustrasi: memotong serat sampai ujungnya rata</p></div>
+  <svg class="clv rv" viewBox="0 0 600 220" role="img" aria-label="Animasi fiber cleaver memotong serat optik">
+    <defs><radialGradient id="cg"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#7dd3fc" stop-opacity=".8"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient></defs>
+    <rect class="fm3" x="1" y="1" width="598" height="218" rx="14"/>
+    <text class="tx3" x="18" y="24">PRECISION CLEAVER</text>
+    <g class="stage3">
+      <rect class="base" x="180" y="122" width="240" height="62" rx="8"/>
+      <rect class="pad" x="214" y="116" width="32" height="6"/><rect class="pad" x="354" y="116" width="32" height="6"/>
+      <text class="tx3" x="300" y="176" text-anchor="middle">CLEAVER</text>
+      <g class="wh"><g class="sp"><circle class="wheel" cx="300" cy="140" r="16"/><path class="spk" d="M300 126V154M286 140H314M290 130L310 150M310 130L290 150"/></g></g>
+      <rect class="coat" x="20" y="100" width="180" height="20" rx="4"/>
+      <rect class="glass" x="200" y="106" width="100" height="8"/><rect class="core3" x="20" y="108" width="280" height="4"/>
+      <g class="off"><rect class="glass" x="300" y="106" width="260" height="8"/><rect class="core3" x="300" y="108" width="260" height="4"/></g>
+      <rect class="face" x="298.5" y="104" width="3" height="12"/>
+      <circle class="flash" cx="300" cy="110" r="20"/>
+      <g class="clamp"><rect class="cl" x="212" y="80" width="36" height="26" rx="4"/></g>
+      <g class="clamp"><rect class="cl" x="352" y="80" width="36" height="26" rx="4"/></g>
+      <path class="cline" d="M303 108L446 80"/>
+      <g class="mag"><circle class="mf" cx="480" cy="62" r="38"/><circle class="mg" cx="480" cy="62" r="26"/><circle class="mc" cx="480" cy="62" r="6"/><path class="mh" d="M507 89L526 108"/></g>
+      <text class="tx3 mlb" x="480" y="124" text-anchor="middle">UJUNG RATA</text>
+      <text class="c1 st3" x="300" y="208" text-anchor="middle">01 · KLEM SERAT</text>
+      <text class="c2 st3" x="300" y="208" text-anchor="middle">02 · GORES BLADE BERLIAN</text>
+      <text class="c3 st3" x="300" y="208" text-anchor="middle">03 · PATAH · UJUNG RATA ✓</text>
+    </g>
+  </svg>
+  <p class="cap rv">ILUSTRASI · FIBER CLEAVER</p>
+</section></div>
+
+<div class="wrap"><section class="splsec">
+  <div class="group-head rv"><h2>Fusion Splicing</h2><p>Ilustrasi: dua serat disambung jadi satu jalur cahaya</p></div>
+  <svg class="spl rv" viewBox="0 0 600 220" role="img" aria-label="Animasi fusion splicing dua serat optik">
+    <defs><radialGradient id="sg"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#fde68a" stop-opacity=".85"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient></defs>
+    <rect class="fm" x="1" y="1" width="598" height="218" rx="14"/>
+    <text x="18" y="24">FUSION SPLICER · V-GROOVE</text>
+    <g class="stage">
+      <polygon class="el" points="293,34 307,34 302,88 298,88"/><polygon class="el" points="293,186 307,186 302,132 298,132"/>
+      <g class="fl"><rect class="fr1" x="40" y="97" width="160" height="26" rx="4"/><rect class="gl" x="200" y="103" width="80" height="14"/><rect class="co" x="40" y="108" width="240" height="4"/></g>
+      <g class="fr"><rect class="fr1" x="400" y="97" width="160" height="26" rx="4"/><rect class="gl" x="320" y="103" width="80" height="14"/><rect class="co" x="320" y="108" width="240" height="4"/></g>
+      <rect class="sleeve" x="248" y="94" width="104" height="32" rx="7"/>
+      <path class="arc" d="M300,90 L295,98 L305,104 L296,111 L304,118 L298,124 L300,130"/>
+      <circle class="glow" cx="300" cy="110" r="26"/>
+      <circle class="pulse" cx="40" cy="110" r="3.5"/>
+      <text class="s1 st" x="300" y="208" text-anchor="middle">01 · ALIGN</text>
+      <text class="s2 st" x="300" y="208" text-anchor="middle">02 · ARC DISCHARGE</text>
+      <text class="s3 st" x="300" y="208" text-anchor="middle">03 · FUSED ✓</text>
+      <text class="loss" x="582" y="24" text-anchor="end">LOSS 0.02 dB</text>
+    </g>
+  </svg>
+  <p class="cap rv">ILUSTRASI · FUSION SPLICING</p>
+</section></div>
+
+<div class="wrap"><section class="closing">
+  <svg class="otdr rv" viewBox="0 0 600 150" role="img" aria-label="Ilustrasi jejak OTDR">
+    <g stroke="var(--line)" stroke-dasharray="3 5"><path d="M0 30H600M0 60H600M0 90H600M0 120H600"/></g>
+    <path id="trc" class="tr" pathLength="1" fill="none" stroke="var(--signal)" stroke-width="2" stroke-linejoin="round" style="filter:drop-shadow(0 0 4px var(--signal))" d="M0,28 L70,30 L72,46 L190,52 L192,64 L330,70 L332,80 L450,88 L452,96 L520,99 L530,22 L542,118 L600,120"/>
+    <g class="mono" fill="var(--text-dim)" font-size="9" text-anchor="middle">
+      <text class="lb" x="72" y="20" style="transition-delay:.7s">Konektor</text><text class="lb" x="192" y="42" style="transition-delay:1.2s">Splice</text>
+      <text class="lb" x="332" y="58" style="transition-delay:1.8s">Splice</text><text class="lb" x="452" y="76" style="transition-delay:2.3s">Konektor</text>
+      <text class="lb" x="530" y="12" style="transition-delay:2.7s">Ujung link</text></g>
+    <circle class="lb" r="4" fill="var(--amber)" style="transition-delay:3s;filter:drop-shadow(0 0 6px var(--amber))"><animateMotion dur="4.5s" repeatCount="indefinite"><mpath href="#trc"/></animateMotion></circle>
+  </svg>
+  <p class="cap rv">ILUSTRASI · JEJAK OTDR 1550nm</p>
+  <p class="lead rv">Tujuh sertifikat, satu arah yang sama: memastikan setiap sinyal sampai tanpa putus — dari ujung serat kaca sampai ke jantung pusat data.</p>
+  <p class="support rv">Masing-masing bukan sekadar lembar penghargaan. Ada keterampilan nyata di baliknya — menyambung dan menguji kabel tembaga, memeriksa inti serat di bawah mikroskop agar bebas goresan, memahami cara cahaya membawa data di sepanjang FTTX, hingga menjaga pusat data tetap stabil sesuai standar SNI 8799:2023. Langkah demi langkah menuju satu tujuan: menjadi teknisi jaringan yang bisa diandalkan, dari ujung serat sampai ke ruang server.</p>
+</section></div>
+
+<div class="wrap"><section class="contact rv">
+  <p class="lbl">HUBUNGI SAYA</p>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nayaka09123@gmail.com" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact via Gmail · nayaka09123@gmail.com</a>
+  <div><button type="button" id="copyMail" class="copy">Salin alamat email</button></div>
+</section></div>
+
+<footer><div class="wrap"><span>Nayaka Agriano Setiawan</span><span>Diperbarui September 2026</span></div></footer>
+</main>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const suhu = [
+    { issuer:'SUHU · E-LEARNING', title:'Data Center Management berdasar SNI 8799:2023 Pusat Data', desc:'Standar nasional untuk merancang dan menjaga keandalan pusat data — dari sistem pendingin hingga prosedur keamanan operasional.', date:'13 Agt 2026' },
+    { issuer:'SUHU · E-LEARNING', title:'Fundamental Principles of Fiber Optics', desc:'Dasar perambatan cahaya dalam serat kaca, dari prinsip pemantulan total hingga arsitektur jaringan optik modern.', date:'13 Agt 2026' },
+  ];
+  const fiberu = [
+    { issuer:'FIBER U · SELF STUDY', title:'FTTX — Fiber To The Home', desc:'Merancang jalur fiber dari pusat jaringan sampai ke rumah pelanggan — arsitektur yang menopang internet rumahan masa kini.', score:84, date:'24 Sep 2026' },
+    { issuer:'FIBER U · MINICOURSE', title:'Connector Inspection and Cleaning', desc:'Satu bintik debu di ujung konektor bisa melemahkan sinyal — teknik memeriksa dan membersihkannya agar cahaya tetap jernih.', score:90, date:'24 Sep 2026' },
+    { issuer:'FIBER U · SELF STUDY', title:'Basic Skills Lab — Copper Cabling (15/16)', desc:'Terminasi dan pengujian kabel tembaga secara langsung — fondasi praktik sebelum bekerja dengan serat optik.', score:93.8, date:'24 Sep 2026' },
+    { issuer:'FIBER U · MINICOURSE', title:'How Fiber Works', desc:'Mengupas bagaimana cahaya membawa data menembus inti serat kaca yang lebih tipis dari sehelai rambut.', score:83.3, date:'24 Sep 2026' },
+    { issuer:'FIBER U · SELF STUDY', title:'Basic Fiber Optics', desc:'Pengantar menyeluruh dunia fiber optik: jenis kabel, mode transmisi cahaya, hingga penerapannya di lapangan.', score:80.2, date:'24 Sep 2026' },
+  ];
+  const led = s => s === undefined ? 'on' : s >= 85 ? 'on' : s >= 75 ? 'mid' : '';
+  const mid = s => s >= 85 ? '' : 'mid';
+
+  function render(list, id) {
+    document.getElementById(id).innerHTML = list.map(c => `
+      <div class="card">
+        <div class="led ${led(c.score)}"></div>
+        <p class="issuer">${c.issuer}</p>
+        <h3>${c.title}</h3>
+        <p class="desc">${c.desc}</p>
+        ${c.score !== undefined ? `<div class="bar"><i class="${mid(c.score)}" data-w="${c.score}"></i></div>` : ''}
+        <div class="meta">
+          ${c.score !== undefined ? `<div class="score ${mid(c.score)}"><span class="cnt" data-to="${c.score}" data-dec="1" data-suf="%">0%</span></div>` : `<div class="score">✓</div>`}
+          <div class="date">${c.date}</div>
+        </div>
+      </div>`).join('');
+  }
+  render(suhu, 'grid-suhu'); render(fiberu, 'grid-fiberu');
+
+  // split title into animated letters
+  const t = document.getElementById('title'); let n = 0;
+  t.setAttribute('aria-label', t.textContent);
+  t.innerHTML = t.textContent.split(' ').map(w =>
+    `<span class="word" aria-hidden="true">${[...w].map(ch => `<span class="ch" style="--i:${n++}">${ch}</span>`).join('')}</span>`
+  ).join(' ');
+
+  // count-up
+  function count(el) {
+    const to = +el.dataset.to, dec = +el.dataset.dec, suf = el.dataset.suf;
+    const fmt = v => v.toFixed(dec) + suf;
+    if (reduce) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 1600;
+    (function step(now) {
+      const p = Math.min(Math.max((now - t0) / dur, 0), 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(to * e);
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  addEventListener('siteready', () => setTimeout(() => document.querySelectorAll('.stat .num').forEach(count), 1900));
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target; el.classList.add('in'); io.unobserve(el);
+    if (el.classList.contains('card')) {
+      const b = el.querySelector('.bar i'); if (b) b.style.width = b.dataset.w + '%';
+      const c = el.querySelector('.cnt'); if (c) setTimeout(() => count(c), 300);
+      setTimeout(() => { el.classList.add('done'); el.style.transitionDelay = '0s'; }, 900);
+    }
+  }), { threshold: .15 });
+  document.querySelectorAll('.card').forEach((c, i) => { c.style.transitionDelay = (i % 6) * .08 + 's'; io.observe(c); });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // 3D tilt + cursor glow
+  document.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
+      if (reduce) return;
+      c.style.setProperty('--ry', ((x / r.width) - .5) * 10 + 'deg');
+      c.style.setProperty('--rx', (.5 - (y / r.height)) * 10 + 'deg');
+    });
+    c.addEventListener('mouseleave', () => { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); });
+  });
+
+  // copy email
+  document.getElementById('copyMail').addEventListener('click', async e => {
+    const btn = e.currentTarget, mail = 'nayaka09123@gmail.com';
+    let ok = false;
+    try { await navigator.clipboard.writeText(mail); ok = true; } catch (_) {}
+    if (!ok) {
+      try {
+        const ta = document.createElement('textarea'); ta.value = mail; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); ok = document.execCommand('copy'); ta.remove();
+      } catch (_) {}
+    }
+    btn.textContent = ok ? 'Tersalin ✓' : 'nayaka09123@gmail.com';
+    setTimeout(() => btn.textContent = 'Salin alamat email', 2500);
+  });
+
+  // network background: drifting nodes, data packets, cursor glow
+  const cv = document.getElementById('net'), cx = cv.getContext('2d');
+  let W, H, nodes = [], pk = [], sig = '#5eead4', amb = '#f8b84e', tick = 0;
+  const m = { x:-999, y:-999, sx:-999, sy:-999 };
+  const cols = () => { const c = getComputedStyle(document.documentElement); sig = c.getPropertyValue('--signal').trim() || sig; amb = c.getPropertyValue('--amber').trim() || amb; };
+  function size() {
+    const d = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+    cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0);
+    nodes = Array.from({ length: Math.round(Math.min(80, W * H / 15000)) }, () => ({
+      x:Math.random() * W, y:Math.random() * H, vx:(Math.random() - .5) * .3, vy:(Math.random() - .5) * .3, r:1 + Math.random() * 1.6, f:0 }));
+  }
+  addEventListener('resize', size); size(); cols();
+  addEventListener('pointermove', e => { m.x = e.clientX; m.y = e.clientY; if (m.sx < 0) { m.sx = m.x; m.sy = m.y; } });
+  function frame() {
+    tick++; if (tick % 120 === 0) cols();
+    cx.clearRect(0, 0, W, H);
+    m.sx += (m.x - m.sx) * .12; m.sy += (m.y - m.sy) * .12;
+    if (m.sx > 0) {
+      const g = cx.createRadialGradient(m.sx, m.sy, 0, m.sx, m.sy, 260);
+      g.addColorStop(0, sig); g.addColorStop(1, 'transparent');
+      cx.globalAlpha = .09; cx.fillStyle = g; cx.fillRect(m.sx - 260, m.sy - 260, 520, 520);
+    }
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < -20) n.x = W + 20; if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20; if (n.y > H + 20) n.y = -20;
+      const dx = n.x - m.sx, dy = n.y - m.sy, d = Math.hypot(dx, dy);
+      if (d < 130 && d > 1) { n.x += dx / d * 1.4; n.y += dy / d * 1.4; }
+      n.f *= .92;
+    }
+    cx.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 150) { cx.globalAlpha = (1 - d / 150) * .32; cx.strokeStyle = sig; cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke(); }
+    }
+    for (const n of nodes) { // links to cursor
+      const d = Math.hypot(n.x - m.sx, n.y - m.sy);
+      if (d < 170) { cx.globalAlpha = (1 - d / 170) * .6; cx.strokeStyle = amb; cx.beginPath(); cx.moveTo(n.x, n.y); cx.lineTo(m.sx, m.sy); cx.stroke(); }
+    }
+    if (!reduce && tick % 28 === 0 && pk.length < 14) {
+      const a = nodes[Math.random() * nodes.length | 0], b = nodes.find(o => o !== a && Math.hypot(o.x - a.x, o.y - a.y) < 150);
+      if (b) pk.push({ a, b, t:0, c:Math.random() < .3 ? amb : sig });
+    }
+    pk = pk.filter(p => {
+      p.t += .028; const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
+      cx.globalAlpha = 1; cx.shadowBlur = 12; cx.shadowColor = p.c; cx.fillStyle = p.c;
+      cx.beginPath(); cx.arc(x, y, 2.2, 0, 6.29); cx.fill(); cx.shadowBlur = 0;
+      if (p.t >= 1) p.b.f = 1; return p.t < 1;
+    });
+    for (const n of nodes) {
+      cx.globalAlpha = .55 + n.f * .45; cx.fillStyle = n.f > .1 ? amb : sig;
+      cx.beginPath(); cx.arc(n.x, n.y, n.r + n.f * 3, 0, 6.29); cx.fill();
+    }
+    cx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+
+  // title: light wave through the name after reveal
+  if (!reduce) addEventListener('siteready', () => setTimeout(() => t.classList.add('live'), 2600));
+
+  // text scramble for section headings
+  const glyph = 'ABCDEF0123456789<>/#$%';
+  function scramble(el) {
+    const txt = el.textContent, t0 = performance.now(), dur = 900;
+    (function step(now) {
+      const p = Math.min(Math.max((now - t0) / dur, 0), 1), k = Math.floor(txt.length * p);
+      el.textContent = txt.slice(0, k) + [...txt.slice(k)].map(c => c === ' ' ? ' ' : glyph[Math.random() * glyph.length | 0]).join('');
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+  if (!reduce) {
+    const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { scramble(e.target); so.unobserve(e.target); } }), { threshold: .6 });
+    document.querySelectorAll('.group-head h2').forEach(h => so.observe(h));
+  }
+
+  // boot sequence
+  (function () {
+    const boot = document.getElementById('boot'); let fired = false;
+    const done = () => { if (fired) return; fired = true; document.body.classList.add('ready'); dispatchEvent(new Event('siteready')); };
+    setTimeout(() => { done(); boot.remove(); }, 6000);
+    if (reduce) { boot.remove(); done(); return; }
+    const bf = document.getElementById('bf'), bn = document.getElementById('bn'), bl = document.getElementById('bl');
+    const msgs = [[0, 'Preparing page…'], [35, 'Loading certificates…'], [75, 'Welcome to my website']];
+    const t0 = Date.now(), dur = 1700;
+    const iv = setInterval(() => {
+      const p = Math.min(Math.max((Date.now() - t0) / dur, 0), 1), e = 1 - Math.pow(1 - p, 2.2), v = Math.round(e * 100);
+      bf.style.transform = `scaleX(${e})`; bn.textContent = v; bl.textContent = msgs.filter(x => v >= x[0]).pop()[1];
+      if (p >= 1) { clearInterval(iv); setTimeout(() => { boot.classList.add('go'); done(); setTimeout(() => boot.remove(), 1100); }, 300); }
+    }, 40);
+  })();
+
+  // marquee
+  const words = ['FTTX', 'SNI 8799:2023', 'Connector Inspection', 'Copper Cabling', 'Data Center', 'Fiber Optics', 'SUHU', 'FOA · Fiber U'];
+  const row = words.map(w => `<span>${w}</span>`).join('<b>◆</b>') + '<b>◆</b>';
+  document.getElementById('mt').innerHTML = row + row;
+
+  // side section dots
+  const secs = [[document.querySelector('header.hero'), 'Awal'],
+    ...[...document.querySelectorAll('section.group')].map((e, i) => [e, i ? 'Fiber U' : 'Profesional']),
+    [document.querySelector('section.contact'), 'Kontak']];
+  const dn = document.createElement('nav'); dn.className = 'dots';
+  dn.innerHTML = secs.map(x => `<button type="button" aria-label="${x[1]}" data-l="${x[1]}"></button>`).join('');
+  document.body.appendChild(dn);
+  const dbs = [...dn.children];
+  dbs.forEach((b, i) => b.addEventListener('click', () => secs[i][0].scrollIntoView({ behavior:reduce ? 'auto' : 'smooth', block:'start' })));
+  const so2 = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { const i = secs.findIndex(x => x[0] === e.target); dbs.forEach((b, k) => b.classList.toggle('on', k === i)); }
+  }), { rootMargin:'-45% 0px -45% 0px' });
+  secs.forEach(x => so2.observe(x[0]));
+
+  // magnetic buttons
+  document.querySelectorAll('.contact a, .copy').forEach(el => {
+    el.addEventListener('pointermove', e => { if (reduce) return; const b = el.getBoundingClientRect();
+      el.style.transform = `translate(${(e.clientX - b.left - b.width / 2) * .22}px,${(e.clientY - b.top - b.height / 2) * .35}px)`; });
+    el.addEventListener('pointerleave', () => el.style.transform = '');
+  });
+
+  // scroll progress
+  const prog = document.getElementById('prog');
+  const upd = () => { const h = document.documentElement.scrollHeight - innerHeight; prog.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    if (!reduce) { const hw = document.querySelector('header.hero .wrap'); hw.style.transform = `translateY(${scrollY * .18}px)`; hw.style.opacity = Math.max(0, 1 - scrollY / 520); } };
+  addEventListener('scroll', upd, { passive: true }); upd();
+</script>
+</body>
+</html>
